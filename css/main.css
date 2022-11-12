@@ -15,18 +15,16 @@
 }
 
 body {
-  height: 100vh;
-  width: 100vw;
+  height: 110vh;
   font-size: 0.75rem;
   font-family: 'Kumbh Sans', sans-serif;
-  background: linear-gradient(var(--soft-violet), var(--solf-blue));
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  background-color: var(--soft-violet); /* for browser that do not support linear gradient */
+  background-image: linear-gradient(var(--soft-violet), var(--solf-blue));
+  overflow-y: hidden;
 }
 
 .card {
+  margin: 160px auto 0 auto;
   width: 290px;
   min-height: 300px;
   padding: 1.7em 1.7em 4em 1.7em;
