@@ -27,7 +27,7 @@ body {
   margin: 160px auto 0 auto;
   width: 290px;
   min-height: 300px;
-  padding: 1.7em 1.7em 4em 1.7em;
+  padding: 2em 2em 4em 2em;
   background-color: white;
   border-radius: 1.7em;
   box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.189);
@@ -65,7 +65,24 @@ body {
 }
 
 .faq--item {
-  font-size: .85rem;
-  padding: 15px 0;
+  font-size: .875rem;
   border-bottom: 1px solid var(--light-grayish-blue);
+}
+
+button {
+  padding: 15px 0;
+  width: 100%;
+  outline: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: inherit;
+}
+
+.img--arrow {
+  margin-left: auto;
+  margin-right: 0;
 }
