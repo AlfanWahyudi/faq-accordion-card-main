@@ -52,21 +52,20 @@ body {
 
 .faq {
   width: 100%;
-  color: var(--dark-blue);
+  color: var(--very-dark-desaturated-blue);
 }
 
 .faq--title {
   text-align: center;
   font-size: 2rem;
-  margin-bottom: 15px;
 }
 
 .faq--list {
+  color: var(--very-dark-grayish-blue);
   list-style: none;
 }
 
 .faq--item {
-  font-size: .875rem;
   border-bottom: 1px solid var(--light-grayish-blue);
 }
 
@@ -80,10 +79,16 @@ button {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: inherit;
+  font-size: .875rem;
+  font-family: inherit;
+  color: var(--very-dark-grayish-blue);
 }
 
 .img--arrow {
   margin-left: auto;
   margin-right: 0;
+}
+
+.faq--answer {
+  display: none;
 }
