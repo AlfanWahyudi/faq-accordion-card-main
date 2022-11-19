@@ -68,10 +68,10 @@ body {
 
 .faq--item {
   border-bottom: 1px solid var(--light-grayish-blue);
+  padding: 17px 0;
 }
 
 .btn--question {
-  padding: 15px 0;
   width: 100%;
   outline: none;
   background: none;
@@ -92,4 +92,11 @@ body {
 
 .arrow-up {
   transform: rotate(180deg);
+}
+
+.faq--answer {
+  margin-top: 12px;
+  max-width: 250px;
+  color: var(--dark-grayish-blue);
+  line-height: 1.5em;
 }
