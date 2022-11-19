@@ -58,6 +58,7 @@ body {
 .faq--title {
   text-align: center;
   font-size: 2rem;
+  margin-bottom: 18px;
 }
 
 .faq--list {
@@ -69,7 +70,7 @@ body {
   border-bottom: 1px solid var(--light-grayish-blue);
 }
 
-button {
+.btn--question {
   padding: 15px 0;
   width: 100%;
   outline: none;
@@ -89,6 +90,6 @@ button {
   margin-right: 0;
 }
 
-.faq--answer {
-  display: none;
+.arrow-up {
+  transform: rotate(180deg);
 }
