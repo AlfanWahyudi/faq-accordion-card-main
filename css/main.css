@@ -16,16 +16,15 @@
 }
 
 body {
-  height: 110vh;
+  min-height: 77vh;
   font-size: 0.75rem;
   font-family: 'Kumbh Sans', sans-serif;
   background-color: var(--soft-violet); /* for browser that do not support linear gradient */
   background-image: linear-gradient(var(--soft-violet), var(--solf-blue));
-  overflow-y: hidden;
 }
 
 .card {
-  margin: 160px auto 0 auto;
+  margin: 23vh auto 7vh auto;
   width: 290px;
   min-height: 300px;
   padding: 2em 2em 4em 2em;
@@ -40,7 +39,7 @@ body {
 .card-img {
   width: 85%;
   height: auto;
-  margin-top: -8.2rem;
+  margin-top: -135px;
 }
 
 .card-img--bg-pattern {
