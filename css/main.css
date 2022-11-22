@@ -66,8 +66,12 @@ body {
 }
 
 .faq--item {
+  max-height: 200px;
+  height: 15px;
+  overflow: hidden;
   border-bottom: 1px solid var(--light-grayish-blue);
   padding: 17px 0;
+  transition: all 200ms;
 }
 
 .btn--question {
@@ -89,12 +93,16 @@ body {
   color: var(--very-dark-desaturated-blue);
 }
 
+.img--arrow {
+  transition: all 200ms;
+}
+
 .arrow-up {
-  transform: rotate(180deg);
+  transform: rotate(-180deg);
 }
 
 .faq--answer {
-  margin-top: 12px;
+  padding-top: 12px;
   max-width: 250px;
   color: var(--dark-grayish-blue);
   line-height: 1.5em;
