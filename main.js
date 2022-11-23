@@ -16,7 +16,7 @@ const setHeightFaqItem = (faqItem, answerElem) => {
 }
 
 const rotatingArrowIcon = (imgArrow) => {
-  imgArrow.classList.toggle('arrow-up');
+  imgArrow.classList.toggle('faq__arrow--up');
 }
 
 const toggleExpandAnswer = (event) => {
@@ -25,7 +25,7 @@ const toggleExpandAnswer = (event) => {
   const faqItem = btn.parentElement;
   const answerElem = btn.nextElementSibling;
   
-  btn.classList.toggle('btn-clicked');
+  btn.classList.toggle('faq__btn--clicked');
   setHeightFaqItem(faqItem, answerElem);
   rotatingArrowIcon(imgArrow);
 }
