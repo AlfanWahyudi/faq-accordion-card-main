@@ -11,7 +11,7 @@ const setHeightFaqItem = (faqItem, answerElem) => {
 
   const answerHeight = answerElem.offsetHeight + paddingFaq;
   const actualFaqHeight = answerHeight + paddingFaq + btnQestionHeight;
-  
+
   faqItem.style.height = toggleFaqHeight(faqItem.offsetHeight, actualFaqHeight, answerHeight);
 }
 
@@ -24,7 +24,7 @@ const toggleExpandAnswer = (event) => {
   const imgArrow = btn.lastElementChild;
   const faqItem = btn.parentElement;
   const answerElem = btn.nextElementSibling;
-  
+
   btn.classList.toggle('faq__btn--clicked');
   setHeightFaqItem(faqItem, answerElem);
   rotatingArrowIcon(imgArrow);
