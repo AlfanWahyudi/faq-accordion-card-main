@@ -1,6 +1,6 @@
 # Frontend Mentor - FAQ accordion card solution
 
-This is a solution to the [FAQ accordion card challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/faq-accordion-card-XlyjD0Oam). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
+This is a solution to the [FAQ accordion card challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/faq-accordion-card-XlyjD0Oam). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
 ## Table of contents
 
@@ -11,12 +11,8 @@ This is a solution to the [FAQ accordion card challenge on Frontend Mentor](http
 - [My process](#my-process)
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
   - [Useful resources](#useful-resources)
 - [Author](#author)
-- [Acknowledgments](#acknowledgments)
-
-**Note: Delete this note and update the table of contents based on what sections you keep.**
 
 ## Overview
 
@@ -30,15 +26,8 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
-
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
-
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it. 
-
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
-
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
+![Screenshot Mobile Version](./images/screenshot-mobile.png)
+![Screenshot Desktop Version](./images/screenshot-desktop.png)
 
 ### Links
 
@@ -50,63 +39,114 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 ### Built with
 
 - Semantic HTML5 markup
-- CSS custom properties
 - Flexbox
 - CSS Grid
 - Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
-
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
+- JavaScript DOM
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+Learning how to open and close answer when the button question is clicked.
 
-To see how you can add code snippets, see below:
+Hide the answer element
+Code HTML FAQ Element:
 
 ```html
-<h1>Some HTML code I'm proud of</h1>
+<li class="faq__item">
+  <button id="btnQuestion" class="faq__btn">
+    How many team members can I invite?
+    <img
+      class="faq__arrow--down"
+      src="./images/icon-arrow-down.svg"
+      alt="arrow down icon"
+    />
+  </button>
+  <p class="faq__answer">
+    You can invite up to 2 additional users on the Free plan. There is no limit
+    on team members for the Premium plan.
+  </p>
+</li>
 ```
+
+To hide the answer element, I use CSS property overflow:hidden. Also, set the height of the element to only show the question.
 ```css
-.proud-of-this-css {
-  color: papayawhip;
+.faq__item {
+  max-height: 200px;
+  height: 15px;
+  overflow: hidden;
+  border-bottom: 1px solid var(--light-grayish-blue);
+  padding: 17px 0;
+  transition: all 200ms;
 }
 ```
+
+When the button answer is clicked, the program will check the current height FAQ element.
+If the height is not the same, then the answer element will open, and if not it will be closed.
+
+These are the JavaScript code snippets that I use to solve this challenge.
+function for adjust height of FAQ element: 
 ```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
+const toggleFaqHeight = (currentHeight, actualHeight, answerHeight) => {
+  const minHeight = 15;
+  return currentHeight !== actualHeight
+    ? `${answerHeight}px`
+    : `${minHeight}px`;
+};
+```
+
+Function for set the new height FAQ element to the HTML.
+```js
+const setHeightFaqItem = (faqItem, answerElem) => {
+  const paddingFaq = 17;
+  const btnQestionHeight = 18;
+
+  const answerHeight = answerElem.offsetHeight + paddingFaq;
+  const actualFaqHeight = answerHeight + paddingFaq + btnQestionHeight;
+
+  faqItem.style.height = toggleFaqHeight(
+    faqItem.offsetHeight,
+    actualFaqHeight,
+    answerHeight
+  );
+};
+```
+
+Another function for change rotation arrow icon when button question is clicked.
+```js
+const rotatingArrowIcon = (imgArrow) => {
+  imgArrow.classList.toggle('faq__arrow--up');
 }
 ```
 
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
+this function is used for open and close answer element.
+```js
+const toggleExpandAnswer = (event) => {
+  const btn = event.srcElement;
+  const imgArrow = btn.lastElementChild;
+  const faqItem = btn.parentElement;
+  const answerElem = btn.nextElementSibling;
 
-**Note: Delete this note and the content within this section and replace with your own learnings.**
+  btn.classList.toggle('faq__btn--clicked');
+  setHeightFaqItem(faqItem, answerElem);
+  rotatingArrowIcon(imgArrow);
+}
+```
 
-### Continued development
-
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
-
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
+Adding event listener to the button question element for running program:
+```js
+const btnQuestions = document.querySelectorAll('#btnQuestion');
+btnQuestions.forEach(btn => {
+  btn.addEventListener('click', toggleExpandAnswer);
+});
+```
 
 ### Useful resources
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
-
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
+- [MDN Web Docs](https://www.example.com) - Great resource to read the documentation like HTML, CSS and JavaScript.
+- [CSS-Tricks](https://css-tricks.com/) - Give us many tricks to use CSS properties for styling website.
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
-
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
-
-## Acknowledgments
-
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
+- Website - [Alfan Wahyudi](https://alfanwahyudi.github.io/)
+- Frontend Mentor - [@AlfanWahyudi](https://www.frontendmentor.io/profile/AlfanWahyudi)
+- Twitter - [@Wahyudi_Alfann](https://www.twitter.com/Wahyudi_Alfann)
